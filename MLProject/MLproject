@@ -1,0 +1,17 @@
+name: harga-pangan-jatim-ci
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      data_dir: {type: str, default: harga_pangan_jatim_preprocessing}
+      n_estimators: {type: float, default: 200}
+      max_depth: {type: float, default: 14}
+      min_samples_leaf: {type: float, default: 20}
+    command: >-
+      python modelling.py
+      --data {data_dir}
+      --n-estimators {n_estimators}
+      --max-depth {max_depth}
+      --min-samples-leaf {min_samples_leaf}

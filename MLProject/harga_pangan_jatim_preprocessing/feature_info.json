@@ -1,0 +1,24 @@
+{
+  "numeric_features": [
+    "harga_rp",
+    "lag_1",
+    "lag_7",
+    "lag_14",
+    "lag_30",
+    "rolling_mean_7",
+    "rolling_std_7",
+    "rolling_mean_30",
+    "pct_change_1",
+    "pct_change_7"
+  ],
+  "categorical_features": [
+    "kabkota_enc",
+    "komoditas_enc",
+    "bulan",
+    "hari_dalam_minggu"
+  ],
+  "target": "arah_7d",
+  "horizon_days": 7,
+  "stable_band": 0.01,
+  "split_date": "2026-01-01"
+}
