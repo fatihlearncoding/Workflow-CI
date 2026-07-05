@@ -39,13 +39,17 @@ def load_data(data_dir: str):
 
 
 def main(data_dir, n_estimators, max_depth, min_samples_leaf):
-    mlflow.set_experiment(EXPERIMENT_NAME)
+    # Catatan: saat dijalankan via `mlflow run`, run aktif sudah dibuat oleh CLI
+    # (MLFLOW_RUN_ID di environment) — cukup lanjutkan run tersebut.
+    # Eksperimen ditentukan lewat flag --experiment-name pada perintah `mlflow run`.
+    if "MLFLOW_RUN_ID" not in os.environ:
+        mlflow.set_experiment(EXPERIMENT_NAME)
     mlflow.sklearn.autolog(log_models=False)
 
     X_train, y_train, X_test, y_test = load_data(data_dir)
     print(f"Train: {X_train.shape}, Test: {X_test.shape}")
 
-    with mlflow.start_run(run_name="ci_retraining") as run:
+    with mlflow.start_run() as run:
         model = RandomForestClassifier(
             n_estimators=n_estimators,
             max_depth=max_depth,

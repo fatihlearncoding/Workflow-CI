@@ -32,7 +32,8 @@ jobs:
       - name: Run mlflow project
         run: |
           cd MLProject
-          mlflow run . --env-manager=local
+          mlflow run . --env-manager=local \
+            --experiment-name "Harga Pangan Jatim - CI Retraining"
 
       - name: Get latest MLflow run_id
         id: runid
